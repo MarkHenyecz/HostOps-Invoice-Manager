@@ -16,5 +16,24 @@ This is an open source end-to-end software for invoicing.
   <li>❌ Version control</li>
 </ul>
 
+# Branching strategy
+<table>
+  <tr>
+    <th>Branch</th>
+    <th>URL</th> 
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>backend-master</td>
+    <td>SOON</td> 
+    <td>Laravel api</td>
+  </tr>
+  <tr>
+    <td>frontend-master</td>
+    <td>SOON</td> 
+    <td>React frontend with tailwindcss</td>
+  </tr>
+</table>
+
 # Website
 Click <a href="https://hostops.hu">HERE</a> to visit our website. 
