@@ -8,6 +8,7 @@ import NavbarItem from './interfaces/navbarItem';
 // Pages
 import Navbar from './components/Navbar'
 import Home from './components/Home/Home'
+import Login from './components/Login/Login';
 
 function AppRouter() {
   let [navItems, setNavItems] = useState<NavbarItem[]>([
@@ -19,10 +20,14 @@ function AppRouter() {
       <div className="App">
         <Navbar pages={navItems} />
         
-        <Routes>
-              <Route path='/' element={< Home />}></Route>
-              <Route path='/login' element={< Home />}></Route>
-        </Routes>
+        <div className='App-wrapper'>
+          <div className='App-wrapper--modal'>
+            <Routes>
+                  <Route path='/' element={< Home />}></Route>
+                  <Route path='/login' element={< Login />}></Route>
+            </Routes>
+          </div>
+        </div>
       </div>
     </Router>
   );
