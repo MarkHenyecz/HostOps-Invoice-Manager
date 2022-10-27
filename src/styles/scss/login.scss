@@ -18,16 +18,18 @@
         display: grid;
 
         & input {
-            background-color: white;
-            border: white 2px solid;
+            background-color: v.$black10;
+            border: v.$black10 2px solid;
+            border-bottom: white 2px solid;
             padding: 5px;
-            border-radius: 10px;
+            border-radius: 5px;
             margin-top: 10px;
             transition: linear 250ms;
+            color: white;
 
             &:focus, &:active, &:valid {
                 outline-width: 0;
-                border-color: v.$black4;
+                border-color: white;
                 & + label {
                     top: calc(-240% - 5px);
                     left: 0%;
@@ -41,6 +43,8 @@
             left: 5%;
             pointer-events: none;
             transition: linear 250ms;
+            color: white;
+            text-shadow: black 0px 1px 5px;
         }
     }
 
@@ -60,6 +64,32 @@
 
         &:hover {
             transform: scale(1.1);
+        }
+    }
+
+    &.mobile {
+        .icon {
+            margin-bottom: 60px;
+    
+            & svg {
+                margin-top: 30px;
+                padding: 7px;
+                border-radius: 30px;
+                border: 2px black solid;
+                transform: scale(3);
+            }
+        }
+
+        input {
+            font-size: 25px;
+        }
+        label {
+            font-size: 25px;
+        }
+
+        button {
+            font-size: 25px;
+            margin-top: 10px;
         }
     }
 }

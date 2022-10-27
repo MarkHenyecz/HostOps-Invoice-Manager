@@ -7,8 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 function Navbar(props: {pages: NavbarItem[]}) {
-  let [mobileState, setMobileState] = useState<boolean>(false);
-
   let token: string|null = window.localStorage.getItem('token');
   const location = useLocation();
   
@@ -37,11 +35,11 @@ function Navbar(props: {pages: NavbarItem[]}) {
           <img src="https://hostops.hu/img/logo.svg" alt="Logo" />
         </div>
 
-        <div className="navbar-icon" onClick={() => setMobileState(!mobileState)}>
+        <div className="navbar-icon">
           <FontAwesomeIcon icon={faBars} />
         </div>
 
-        <div className={"navbar-items"+(mobileState ? ' active' : '')}>
+        <div className={"navbar-items"}>
           {props.pages.map(i => 
           <li>
               <Link to={i.link}><h1 className={location.pathname === i.link ? 'active' : ''}>{i.name}</h1></Link>

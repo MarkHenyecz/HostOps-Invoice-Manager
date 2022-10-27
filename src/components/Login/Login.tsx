@@ -6,7 +6,7 @@ import '../../styles/scss/login.scss'
 
 function Login() {
     return(
-        <div className={"login"+(isMobile ? '-mobile' : '')}>
+        <div className={"login"+(isMobile ? ' mobile' : '')}>
             <div className="icon">
                 <FontAwesomeIcon icon={faUser} />
             </div>
