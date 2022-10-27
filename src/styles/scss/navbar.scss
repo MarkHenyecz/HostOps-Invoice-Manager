@@ -119,7 +119,7 @@
     }
 
     &-items {
-        display: flex;
+        display: grid;
         position: fixed;
         left: 0;
         top: -4rem;
@@ -158,5 +158,9 @@
                 }
             }
         }
+    }
+
+    &-desktop-items {
+        display: flex;
     }
 }

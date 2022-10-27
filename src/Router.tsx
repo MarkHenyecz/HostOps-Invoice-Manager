@@ -12,7 +12,8 @@ import Login from './components/Login/Login';
 
 function AppRouter() {
   let [navItems, setNavItems] = useState<NavbarItem[]>([
-    {name: 'Home', link: '/'},
+    {name: 'Dashboard', link: '/'},
+    {name: 'Logout', link: '/logout'},
   ]);
 
   return (

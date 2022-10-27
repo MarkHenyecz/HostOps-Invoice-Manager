@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 function Navbar(props: {pages: NavbarItem[]}) {
-  let token: string|null = window.localStorage.getItem('token');
+  // let token: string|null = window.localStorage.getItem('token');
+  let token: string|null = "loggedin";
   const location = useLocation();
   
   if(!token && location.pathname !== '/login') {
@@ -23,12 +24,12 @@ function Navbar(props: {pages: NavbarItem[]}) {
           <img src="https://hostops.hu/img/logo.svg" alt="Logo" />
         </div>
         
-        {token ?? <div>
+        {token ? <div className="navbar-desktop-items">
           {props.pages.map(i => 
           <li>
             <Link to={i.link}><h1 className={location.pathname === i.link ? 'active' : ''}>{i.name}</h1></Link>
           </li>)}
-        </div>}
+        </div> : ''}
       </BrowserView>
       <MobileView className="mobile-view">
         <div className='navbar-logo'>
@@ -39,12 +40,12 @@ function Navbar(props: {pages: NavbarItem[]}) {
           <FontAwesomeIcon icon={faBars} />
         </div>
 
-        <div className={"navbar-items"}>
+        {token ? <div className={"navbar-items"}>
           {props.pages.map(i => 
           <li>
-              <Link to={i.link}><h1 className={location.pathname === i.link ? 'active' : ''}>{i.name}</h1></Link>
+            <Link to={i.link}><h1 className={location.pathname === i.link ? 'active' : ''}>{i.name}</h1></Link>
           </li>)}
-        </div>
+        </div> : ''}
       </MobileView>
     </ul>
   )
