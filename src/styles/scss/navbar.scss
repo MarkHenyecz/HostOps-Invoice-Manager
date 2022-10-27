@@ -7,6 +7,7 @@
     top: 0;
     margin: 0;
     padding: 0;
+    z-index: 901;
 
     width: 100%;
     height: 3rem;
@@ -17,7 +18,7 @@
         list-style-type: none;
     }
 
-    & div {
+    & .desktop {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -62,6 +63,79 @@
 
             &:hover {
                 transform: scale(1.1);
+            }
+        }
+    }
+
+    &.mobile {
+        display: flex;
+        justify-content: space-between;
+
+        .mobile-view {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar-icon {
+            width: fit-content;
+            margin-right: 1rem;
+
+            svg {
+                transition: 250ms ease;
+                color: white;
+                height: 80%;
+            }
+
+            & .active, &:hover {
+                svg {
+                    transform: translateY(-100%);
+                }
+
+                + .navbar-items {
+                    top: 3rem;
+                }
+            }
+        }
+    }
+
+    &-items {
+        display: flex;
+        position: fixed;
+        left: 0;
+        top: -3.5rem;
+        width: 100%;
+        z-index: 900;
+        transition: 250ms;
+
+        li {
+            width: 100%;
+            background-color: g.$black4;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 20px;
+
+            a {
+                color: white;
+                text-decoration: none;
+                height: fit-content;
+
+                &:after {
+                    display: block;
+                    content: '';
+                    border-bottom: 2px white solid;
+                    transition: transform 250ms ease-in-out;
+                    transform: scaleX(0); 
+                }
+                &:hover:after, &.active:after {
+                    transform: scaleX(1); 
+                }
+
+                h1 {
+                    width: fit-content;
+                    margin: 0;
+                }
             }
         }
     }

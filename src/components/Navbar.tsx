@@ -1,11 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, Navigate, useLocation } from 'react-router-dom';
-import { BrowserView, MobileView } from 'react-device-detect';
+import { BrowserView, MobileView, isMobile } from 'react-device-detect';
 import '../styles/scss/navbar.scss'
 import NavbarItem from "../interfaces/navbarItem";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 function Navbar(props: {pages: NavbarItem[]}) {
+  let [mobileState, setMobileState] = useState<boolean>(false);
+
   let token: string|null = window.localStorage.getItem('token');
   const location = useLocation();
   
@@ -16,8 +19,8 @@ function Navbar(props: {pages: NavbarItem[]}) {
   }
 
   return(
-    <ul className="navbar">
-      <BrowserView>
+    <ul className={"navbar"+(isMobile ? ' mobile' : '')}>
+      <BrowserView className="desktop">
         <div className='navbar-logo'>
           <img src="https://hostops.hu/img/logo.svg" alt="Logo" />
         </div>
@@ -29,6 +32,22 @@ function Navbar(props: {pages: NavbarItem[]}) {
           </li>)}
         </div>}
       </BrowserView>
+      <MobileView className="mobile-view">
+        <div className='navbar-logo'>
+          <img src="https://hostops.hu/img/logo.svg" alt="Logo" />
+        </div>
+
+        <div className="navbar-icon" onClick={() => setMobileState(!mobileState)}>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
+
+        <div className={"navbar-items"+(mobileState ? ' active' : '')}>
+          {props.pages.map(i => 
+          <li>
+              <Link to={i.link}><h1 className={location.pathname === i.link ? 'active' : ''}>{i.name}</h1></Link>
+          </li>)}
+        </div>
+      </MobileView>
     </ul>
   )
 }
